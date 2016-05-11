@@ -1,2 +1,12 @@
 http://www.w3schools.com/aspnet/mvc_intro.asp
 
+TODO:
+
+*  add inex for buildings, departments, etc
+
+* setup repo and context xs files
+
+* check if custom namespace is correct
+
+* ...
+
