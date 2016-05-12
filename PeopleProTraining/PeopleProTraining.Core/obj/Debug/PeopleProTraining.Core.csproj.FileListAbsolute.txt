@@ -7,3 +7,12 @@ C:\Users\turkingk\Desktop\FLPeoplePro\PeopleProTraining\PeopleProTraining.Core\b
 C:\Users\turkingk\Desktop\FLPeoplePro\PeopleProTraining\PeopleProTraining.Core\obj\Debug\PeopleProTraining.Core.csprojResolveAssemblyReference.cache
 C:\Users\turkingk\Desktop\FLPeoplePro\PeopleProTraining\PeopleProTraining.Core\obj\Debug\PeopleProTraining.Core.dll
 C:\Users\turkingk\Desktop\FLPeoplePro\PeopleProTraining\PeopleProTraining.Core\obj\Debug\PeopleProTraining.Core.pdb
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Core\bin\Debug\PeopleProTraining.Core.dll
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Core\bin\Debug\PeopleProTraining.Core.pdb
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Core\bin\Debug\PeopleProTraining.Dal.dll
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Core\bin\Debug\EntityFramework.dll
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Core\bin\Debug\PeopleProTraining.Dal.pdb
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Core\bin\Debug\EntityFramework.xml
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Core\obj\Debug\PeopleProTraining.Core.csprojResolveAssemblyReference.cache
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Core\obj\Debug\PeopleProTraining.Core.dll
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Core\obj\Debug\PeopleProTraining.Core.pdb

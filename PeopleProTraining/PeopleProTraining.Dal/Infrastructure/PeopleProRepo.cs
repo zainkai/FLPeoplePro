@@ -22,6 +22,8 @@ namespace PeopleProTraining.Dal.Infrastructure
             p_context = context;
         }
 
+
+
         #region access
 
         #region employees
@@ -42,6 +44,34 @@ namespace PeopleProTraining.Dal.Infrastructure
         {
             return GetEmployee(t => t.Id == id);
         }
+
+        #endregion
+
+        #region Department
+        public IQueryable<Department> GetDepartments()
+        {
+            return p_context.Departments;
+            
+        }
+
+        public IEnumerable<Department> GetDepartments(Func<Department, bool> predicate)
+        {
+            return p_context.Departments.Where(predicate);
+        }
+
+        public Department GetDepartment(Func<Department,bool> predicate)
+        {
+            return GetDepartments().SingleOrDefault(predicate);
+        }
+
+        public Department GetDepartment(int id)
+        {
+            return GetDepartment(t => t.Id == id);
+        }
+        #endregion
+
+        //TODO**********************************************<<<
+        #region Building
 
         #endregion
         #endregion

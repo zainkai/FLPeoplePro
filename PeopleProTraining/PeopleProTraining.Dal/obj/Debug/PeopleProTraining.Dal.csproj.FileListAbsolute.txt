@@ -8,3 +8,13 @@ C:\Users\turkingk\Desktop\FLPeoplePro\PeopleProTraining\PeopleProTraining.Dal\bi
 C:\Users\turkingk\Desktop\FLPeoplePro\PeopleProTraining\PeopleProTraining.Dal\obj\Debug\PeopleProTraining.Dal.csprojResolveAssemblyReference.cache
 C:\Users\turkingk\Desktop\FLPeoplePro\PeopleProTraining\PeopleProTraining.Dal\obj\Debug\PeopleProTraining.Dal.dll
 C:\Users\turkingk\Desktop\FLPeoplePro\PeopleProTraining\PeopleProTraining.Dal\obj\Debug\PeopleProTraining.Dal.pdb
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Dal\bin\Debug\PeopleProTraining.Dal.dll.config
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Dal\bin\Debug\PeopleProTraining.Dal.dll
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Dal\bin\Debug\PeopleProTraining.Dal.pdb
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Dal\bin\Debug\EntityFramework.dll
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Dal\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Dal\bin\Debug\EntityFramework.xml
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Dal\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Dal\obj\Debug\PeopleProTraining.Dal.csprojResolveAssemblyReference.cache
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Dal\obj\Debug\PeopleProTraining.Dal.dll
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Dal\obj\Debug\PeopleProTraining.Dal.pdb

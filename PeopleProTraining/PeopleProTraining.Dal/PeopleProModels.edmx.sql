@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/11/2016 08:20:50
--- Generated from EDMX file: C:\Users\turkingk\Desktop\FLPeoplePro\PeopleProTraining\PeopleProTraining.Dal\PeopleProModels.edmx
+-- Date Created: 05/12/2016 09:17:35
+-- Generated from EDMX file: C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Dal\PeopleProModels.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [PeopleProTraining];
+USE [FLPeoplePro_kt];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -17,6 +17,15 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_BuildingsDepartment_Buildings]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[BuildingsDepartment] DROP CONSTRAINT [FK_BuildingsDepartment_Buildings];
+GO
+IF OBJECT_ID(N'[dbo].[FK_BuildingsDepartment_Department]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[BuildingsDepartment] DROP CONSTRAINT [FK_BuildingsDepartment_Department];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DepartmentEmployee]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Employees] DROP CONSTRAINT [FK_DepartmentEmployee];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -24,6 +33,15 @@ GO
 
 IF OBJECT_ID(N'[dbo].[Employees]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Employees];
+GO
+IF OBJECT_ID(N'[dbo].[Buildings]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Buildings];
+GO
+IF OBJECT_ID(N'[dbo].[Departments]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Departments];
+GO
+IF OBJECT_ID(N'[dbo].[BuildingsDepartment]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[BuildingsDepartment];
 GO
 
 -- --------------------------------------------------

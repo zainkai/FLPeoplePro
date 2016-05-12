@@ -14,11 +14,27 @@ namespace PeopleProTraining.Dal.Interfaces
         #region employees
         IQueryable<Employee> GetEmployees();
         IEnumerable<Employee> GetEmployees(Func<Employee, bool> predicate);
-
         Employee GetEmployee(Func<Employee, bool> predicate);
         Employee GetEmployee(int id);
         #endregion
+
+        
+        #region Departments
+        IQueryable<Department> GetDepartment();
+        IEnumerable<Department> GetDepartment(Func<Department, bool> predicate);
+        Department GetDepartments(Func<Department, bool> predicate);
+        Department GetDepartment(int id);
         #endregion
+
+        #region Buildings
+        IQueryable<Building> GetBuilding();
+        IEnumerable<Building> GetBuildings(Func<Building, bool> predicate);
+        Building GetBuilding(Func<Building, bool> predicate);
+        Building GetBuilding(int id);
+        #endregion
+        
+        #endregion
+        
 
     }
 }

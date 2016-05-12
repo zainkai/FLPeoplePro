@@ -15,12 +15,15 @@ namespace PeopleProTraining.Dal.Infrastructure
 
         }
         public IDbSet<Employee> Employees { get; set; }
+        public IDbSet<Building> Buildings { get; set; }
+        public IDbSet<Department> Departments { get; set; }
 
+        /*
         public System.Data.Entity.DbSet<PeopleProTraining.Dal.Models.BuildingMetaData> BuildingMetaDatas { get; set; }
 
         public System.Data.Entity.DbSet<PeopleProTraining.Dal.Models.DepartmentMetaData> DepartmentMetaDatas { get; set; }
 
         public System.Data.Entity.DbSet<PeopleProTraining.Dal.Models.EmployeeMetaData> EmployeeMetaDatas { get; set; }
-
+        */
     }
 }

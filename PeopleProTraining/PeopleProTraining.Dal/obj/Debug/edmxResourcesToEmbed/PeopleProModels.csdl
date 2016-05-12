@@ -18,8 +18,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FirstName" Type="String" Nullable="true" />
-    <Property Name="LastName" Type="String" Nullable="false" />
+    <Property Name="FirstName" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Department" Relationship="PeopleProModels.DepartmentEmployee" FromRole="Employee" ToRole="Department" />
     <Property Name="DepartmentId" Type="Int32" Nullable="false" />
   </EntityType>
@@ -28,8 +28,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Address" Type="String" Nullable="false" />
-    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Departments" Relationship="PeopleProModels.BuildingsDepartment" FromRole="Buildings" ToRole="Department" />
   </EntityType>
   <EntityType Name="Department">
@@ -37,7 +37,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Buildings" Relationship="PeopleProModels.BuildingsDepartment" FromRole="Department" ToRole="Buildings" />
     <NavigationProperty Name="Employees" Relationship="PeopleProModels.DepartmentEmployee" FromRole="Department" ToRole="Employee" />
   </EntityType>
