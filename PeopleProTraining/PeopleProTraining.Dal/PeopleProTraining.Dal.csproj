@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Buildings.cs">
+    <Compile Include="Building.cs">
       <DependentUpon>PeopleProModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Department.cs">
@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="PeopleProModels.edmx.diagram">
       <DependentUpon>PeopleProModels.edmx</DependentUpon>

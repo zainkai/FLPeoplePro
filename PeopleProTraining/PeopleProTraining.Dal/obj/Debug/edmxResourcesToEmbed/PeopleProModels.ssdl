@@ -1,11 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="PeopleProModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Buildings">
+<Schema Namespace="PeopleProModels.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="PeopleProModelsStoreContainer">
+    <EntitySet Name="Employees" EntityType="PeopleProModels.Store.Employees" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Building" EntityType="PeopleProModels.Store.Building" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Departments" EntityType="PeopleProModels.Store.Departments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BuildingsDepartment" EntityType="PeopleProModels.Store.BuildingsDepartment" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_BuildingsDepartment_Buildings" Association="PeopleProModels.Store.FK_BuildingsDepartment_Buildings">
+      <End Role="Buildings" EntitySet="Building" />
+      <End Role="BuildingsDepartment" EntitySet="BuildingsDepartment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BuildingsDepartment_Department" Association="PeopleProModels.Store.FK_BuildingsDepartment_Department">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="BuildingsDepartment" EntitySet="BuildingsDepartment" />
+    </AssociationSet>
+    <AssociationSet Name="DepartmentEmployee" Association="PeopleProModels.Store.DepartmentEmployee">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DepartmentId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Building">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="BuildingsDepartment">
@@ -16,25 +50,21 @@
     <Property Name="Buildings_Id" Type="int" Nullable="false" />
     <Property Name="Departments_Id" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Departments">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Employees">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar(max)" />
-    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DepartmentId" Type="int" Nullable="false" />
-  </EntityType>
+  <Association Name="DepartmentEmployee">
+    <End Role="Department" Type="PeopleProModels.Store.Departments" Multiplicity="1" />
+    <End Role="Employee" Type="PeopleProModels.Store.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_BuildingsDepartment_Buildings">
-    <End Role="Buildings" Type="Self.Buildings" Multiplicity="1" />
-    <End Role="BuildingsDepartment" Type="Self.BuildingsDepartment" Multiplicity="*" />
+    <End Role="Buildings" Type="PeopleProModels.Store.Building" Multiplicity="1" />
+    <End Role="BuildingsDepartment" Type="PeopleProModels.Store.BuildingsDepartment" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Buildings">
         <PropertyRef Name="Id" />
@@ -45,10 +75,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_BuildingsDepartment_Department">
-    <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
-    <End Role="BuildingsDepartment" Type="Self.BuildingsDepartment" Multiplicity="*" />
+    <End Role="BuildingsDepartment" Type="PeopleProModels.Store.BuildingsDepartment" Multiplicity="*" />
+    <End Role="Department" Type="PeopleProModels.Store.Departments" Multiplicity="1" />
     <ReferentialConstraint>
-      <Principal Role="Departments">
+      <Principal Role="Department">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="BuildingsDepartment">
@@ -56,34 +86,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_DepartmentEmployee">
-    <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
-    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Departments">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Employees">
-        <PropertyRef Name="DepartmentId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="PeopleProModelsStoreContainer">
-    <EntitySet Name="Buildings" EntityType="Self.Buildings" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="BuildingsDepartment" EntityType="Self.BuildingsDepartment" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_BuildingsDepartment_Buildings" Association="Self.FK_BuildingsDepartment_Buildings">
-      <End Role="Buildings" EntitySet="Buildings" />
-      <End Role="BuildingsDepartment" EntitySet="BuildingsDepartment" />
-    </AssociationSet>
-    <AssociationSet Name="FK_BuildingsDepartment_Department" Association="Self.FK_BuildingsDepartment_Department">
-      <End Role="Departments" EntitySet="Departments" />
-      <End Role="BuildingsDepartment" EntitySet="BuildingsDepartment" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DepartmentEmployee" Association="Self.FK_DepartmentEmployee">
-      <End Role="Departments" EntitySet="Departments" />
-      <End Role="Employees" EntitySet="Employees" />
-    </AssociationSet>
-  </EntityContainer>
 </Schema>

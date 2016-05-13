@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PeopleProTraining.Dal.Infrastructure;
+using PeopleProTraining.Dal.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,19 @@ namespace PeopleProTraining.Controllers
 {
     public class EmployeeController : Controller
     {
+        #region datasetup (allows access to SQL data base)
+        private IPeopleProRepo m_repo;
+        public EmployeeController(): this(new PeopleProRepo())
+        {
+        }
+        public EmployeeController(IPeopleProRepo repo)
+        {
+            m_repo = repo;
+        }
+        #endregion
+
+
+
         // GET: Employee
         public ActionResult Index()
         {

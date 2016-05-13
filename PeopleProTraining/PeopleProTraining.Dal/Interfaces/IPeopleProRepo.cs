@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PeopleProTraining.Dal.Interfaces
 {
-    public interface IPeopleProRepo
+    public interface IPeopleProRepo :IDisposable
     {
         #region access
 
@@ -16,25 +16,32 @@ namespace PeopleProTraining.Dal.Interfaces
         IEnumerable<Employee> GetEmployees(Func<Employee, bool> predicate);
         Employee GetEmployee(Func<Employee, bool> predicate);
         Employee GetEmployee(int id);
+        void SaveEmployee(Employee employee);
+        void DeleteEmployee(Employee employee);
         #endregion
 
         
         #region Departments
-        IQueryable<Department> GetDepartment();
-        IEnumerable<Department> GetDepartment(Func<Department, bool> predicate);
-        Department GetDepartments(Func<Department, bool> predicate);
+        IQueryable<Department> GetDepartments();
+        IEnumerable<Department> GetDepartments(Func<Department, bool> predicate);
+        Department GetDepartment(Func<Department, bool> predicate);
         Department GetDepartment(int id);
+        void SaveDepartment(Department department);
+        void DeleteDepartment(Department department);
         #endregion
 
+
         #region Buildings
-        IQueryable<Building> GetBuilding();
+        IQueryable<Building> GetBuildings();
         IEnumerable<Building> GetBuildings(Func<Building, bool> predicate);
         Building GetBuilding(Func<Building, bool> predicate);
         Building GetBuilding(int id);
+        void SaveBuilding(Building building);
+        void DeleteBuilding(Building building);
         #endregion
-        
+
         #endregion
-        
+
 
     }
 }

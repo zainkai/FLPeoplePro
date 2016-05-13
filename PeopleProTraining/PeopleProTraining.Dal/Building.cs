@@ -12,10 +12,10 @@ namespace PeopleProTraining.Dal.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Buildings
+    public partial class Building
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Buildings()
+        public Building()
         {
             this.Departments = new HashSet<Department>();
         }

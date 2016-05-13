@@ -17,7 +17,7 @@ namespace PeopleProTraining.Dal.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Department()
         {
-            this.Buildings = new HashSet<Buildings>();
+            this.Buildings = new HashSet<Building>();
             this.Employees = new HashSet<Employee>();
         }
     
@@ -25,7 +25,7 @@ namespace PeopleProTraining.Dal.Models
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Buildings> Buildings { get; set; }
+        public virtual ICollection<Building> Buildings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }
     }

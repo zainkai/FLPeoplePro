@@ -22,8 +22,6 @@ namespace PeopleProTraining.Dal.Infrastructure
             p_context = context;
         }
 
-
-
         #region access
 
         #region employees
@@ -43,6 +41,19 @@ namespace PeopleProTraining.Dal.Infrastructure
         public Employee GetEmployee(int id)
         {
             return GetEmployee(t => t.Id == id);
+        }
+        public void SaveEmployee(Employee employee)
+        {
+            DoSave(p_context.Employees, employee, employee.Id, e => e.Id == employee.Id);
+        }
+        public void DeleteEmployee(Employee employee)
+        {
+            if(employee == null || employee.Id <= 0)
+            {
+                return;
+            }
+            p_context.Employees.Remove(employee);
+            p_context.SaveChanges();
         }
 
         #endregion
@@ -68,12 +79,55 @@ namespace PeopleProTraining.Dal.Infrastructure
         {
             return GetDepartment(t => t.Id == id);
         }
+        public void SaveDepartment(Department department)
+        {
+            DoSave(p_context.Departments, department, department.Id, e => e.Id == department.Id);
+        }
+        public void DeleteDepartment(Department department)
+        {
+            if (department == null || department.Id <= 0)
+            {
+                return;
+            }
+            p_context.Departments.Remove(department);
+            p_context.SaveChanges();
+        }
         #endregion
 
-        //TODO**********************************************<<<
+
         #region Building
+        public IQueryable<Building> GetBuildings()
+        {
+            return p_context.Buildings;
+        }
 
+        public IEnumerable<Building> GetBuildings(Func<Building, bool> predicate)
+        {
+            return p_context.Buildings.Where(predicate);
+        }
+        public Building GetBuilding(Func<Building,bool> predicate)
+        {
+            return GetBuildings().SingleOrDefault(predicate);
+        }
+        public Building GetBuilding(int id)
+        {
+            return GetBuilding(t => t.Id == id);
+        }
+        public void SaveBuilding(Building building)
+        {
+            DoSave(p_context.Buildings, building, building.Id, e => e.Id == building.Id);
+        }
+        public void DeleteBuilding(Building building)
+        {
+            if (building == null || building.Id <= 0)
+            {
+                return;
+            }
+            p_context.Buildings.Remove(building);
+            p_context.SaveChanges();
+        }
         #endregion
+
         #endregion
 
 

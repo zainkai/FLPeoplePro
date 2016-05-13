@@ -11,9 +11,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Buildings">
-      <EntityTypeMapping TypeName="IsTypeOf(PeopleProModels.Buildings)">
-        <MappingFragment StoreEntitySet="Buildings">
+    <EntitySetMapping Name="Building">
+      <EntityTypeMapping TypeName="IsTypeOf(PeopleProModels.Building)">
+        <MappingFragment StoreEntitySet="Building">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Name" ColumnName="Name" />

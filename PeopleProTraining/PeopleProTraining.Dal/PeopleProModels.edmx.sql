@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/12/2016 09:17:35
+-- Date Created: 05/13/2016 08:39:08
 -- Generated from EDMX file: C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Dal\PeopleProModels.edmx
 -- --------------------------------------------------
 
@@ -31,17 +31,17 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Employees]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Employees];
-GO
 IF OBJECT_ID(N'[dbo].[Buildings]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Buildings];
+GO
+IF OBJECT_ID(N'[dbo].[BuildingsDepartment]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[BuildingsDepartment];
 GO
 IF OBJECT_ID(N'[dbo].[Departments]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Departments];
 GO
-IF OBJECT_ID(N'[dbo].[BuildingsDepartment]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[BuildingsDepartment];
+IF OBJECT_ID(N'[dbo].[Employees]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Employees];
 GO
 
 -- --------------------------------------------------
@@ -57,8 +57,8 @@ CREATE TABLE [dbo].[Employees] (
 );
 GO
 
--- Creating table 'Buildings'
-CREATE TABLE [dbo].[Buildings] (
+-- Creating table 'Building'
+CREATE TABLE [dbo].[Building] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Address] nvarchar(max)  NOT NULL,
     [Name] nvarchar(max)  NOT NULL
@@ -89,9 +89,9 @@ ADD CONSTRAINT [PK_Employees]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Buildings'
-ALTER TABLE [dbo].[Buildings]
-ADD CONSTRAINT [PK_Buildings]
+-- Creating primary key on [Id] in table 'Building'
+ALTER TABLE [dbo].[Building]
+ADD CONSTRAINT [PK_Building]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -115,7 +115,7 @@ GO
 ALTER TABLE [dbo].[BuildingsDepartment]
 ADD CONSTRAINT [FK_BuildingsDepartment_Buildings]
     FOREIGN KEY ([Buildings_Id])
-    REFERENCES [dbo].[Buildings]
+    REFERENCES [dbo].[Building]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
