@@ -10,6 +10,15 @@ namespace PeopleProTraining.Dal.Extensions
     public static class ObjectExtensions
     {
         /// <summary>
+        /// Borrowed from small fruits. Determines whether the target sequence is null or empty.
+        /// </summary>
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> target) where T : class
+        {
+            return target == null || !target.Any();
+        }
+
+        
+        /// <summary>
         /// Copies one object to another.  The objects need not be of the same type.  The copying process matches on property name and type.  This is a shallow copy; collections will not be copied.
         /// </summary>
         /// <typeparam name="TOriginal"></typeparam>

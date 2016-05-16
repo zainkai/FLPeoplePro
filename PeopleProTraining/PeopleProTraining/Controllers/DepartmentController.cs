@@ -1,5 +1,6 @@
 ﻿using PeopleProTraining.Dal.Infrastructure;
 using PeopleProTraining.Dal.Interfaces;
+using PeopleProTraining.Dal.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,11 +25,22 @@ namespace PeopleProTraining.Controllers
         // GET: Department
         public ActionResult Index()
         {
-            return View();
+            //creating an object filled with database info....
+            IEnumerable<Department> Departments = m_repo.GetDepartments();
+            if (Departments == null)
+            {
+                return RedirectToAction("Create");
+            }
+            else
+            {
+                return View(Departments);//TODO departments
+            }
         }
 
         public ActionResult Create()
         {
+            //for models that require other objects, like departments and employees you can add a select list to use for a dropdown:
+            ViewBag.Departments = new SelectList(m_repo.GetDepartments(), "Id", "Name");
             return View();
         }
 

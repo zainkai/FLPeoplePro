@@ -112,6 +112,8 @@ namespace PeopleProTraining.Controllers
                 return View(building);
             }
         }
+
+
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
         public ActionResult EditConfirmed(Building building)
