@@ -3,7 +3,9 @@ using PeopleProTraining.Dal.Interfaces;
 using PeopleProTraining.Dal.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,7 +15,7 @@ namespace PeopleProTraining.Controllers
     {
         #region datasetup (allows access to SQL data base)
         private IPeopleProRepo m_repo;
-        public BuildingController(): this(new PeopleProRepo())
+        public BuildingController() : this(new PeopleProRepo())
         {
         }
         public BuildingController(IPeopleProRepo repo)
@@ -48,7 +50,7 @@ namespace PeopleProTraining.Controllers
         [HttpPost]
         public ActionResult Create(Building building)
         {
-            if(building == null)
+            if (building == null)
             {
                 return RedirectToAction("Create");
             }
@@ -61,10 +63,9 @@ namespace PeopleProTraining.Controllers
             return View(building);
         }
 
-        public ActionResult Details(Building structure)
+        public ActionResult Details(int id)
         {
-            //TODO CALL GetBuilding(Func<Building,bool> predicate)
-            Building building = m_repo.GetBuilding();
+            Building building = m_repo.GetBuilding(id);
             if (building == null)
             {
                 return RedirectToAction("Index");
@@ -84,11 +85,22 @@ namespace PeopleProTraining.Controllers
             }
             else
             {
-                return View(id);
+                return View(building);
             }
         }
 
-        public ActionResult edit(int id)
+        //similar to javascript eventlistener.
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Building building = m_repo.GetBuilding(id);
+            m_repo.DeleteBuilding(building);
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult Edit(int id)
         {
             Building building = m_repo.GetBuilding(id);
             if (building == null)
@@ -97,8 +109,19 @@ namespace PeopleProTraining.Controllers
             }
             else
             {
-                return View(id);
+                return View(building);
             }
+        }
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditConfirmed(Building building)
+        {
+            if (ModelState.IsValid)
+            {
+                m_repo.SaveBuilding(building);
+                return RedirectToAction("Index");
+            }
+            return View(building);
         }
 
     }
