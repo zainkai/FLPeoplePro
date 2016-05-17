@@ -47,7 +47,8 @@ namespace PeopleProTraining.Controllers
 
 
         //setting Create View to POST
-        [HttpPost]
+        [HttpPost, ActionName("Create")]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Building building)
         {
             if (building == null)

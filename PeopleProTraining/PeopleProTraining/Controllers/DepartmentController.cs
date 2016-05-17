@@ -44,19 +44,81 @@ namespace PeopleProTraining.Controllers
             return View();
         }
 
-        public ActionResult Details()
+        [HttpPost, ActionName("Create")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Department department)
         {
-            return View();
+            if (department == null)
+            {
+                return RedirectToAction("Create");
+            }
+            else if (ModelState.IsValid)
+            {
+                m_repo.SaveDepartment(department);
+                return RedirectToAction("Index");
+            }
+
+            return View(department);
         }
 
-        public ActionResult Delete()
+        public ActionResult Details(int id)
         {
-            return View();
+            Department department = m_repo.GetDepartment(id);
+            if (department == null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(department);
+            }
         }
 
-        public ActionResult edit()
+        public ActionResult Delete(int id)
         {
-            return View();
+            Department department = m_repo.GetDepartment(id);
+            if (department == null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(department);
+            }
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Department department = m_repo.GetDepartment(id);
+            m_repo.DeleteDepartment(department);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult edit(int id)
+        {
+            Department department = m_repo.GetDepartment(id);
+            if (department == null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(department);
+            }
+        }
+
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditConfirmed(Department department)
+        {
+            if (ModelState.IsValid)
+            {
+                m_repo.SaveDepartment(department);
+                return RedirectToAction("Index");
+            }
+            return View(department);
         }
 
     }
