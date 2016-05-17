@@ -6,8 +6,8 @@
         <MappingFragment StoreEntitySet="Employees">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -25,16 +25,9 @@
         <MappingFragment StoreEntitySet="Departments">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="BuildingsDepartment" TypeName="PeopleProModels.BuildingsDepartment" StoreEntitySet="BuildingsDepartment">
-      <EndProperty Name="Buildings">
-        <ScalarProperty Name="Id" ColumnName="Buildings_Id" />
-      </EndProperty>
-      <EndProperty Name="Department">
-        <ScalarProperty Name="Id" ColumnName="Departments_Id" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

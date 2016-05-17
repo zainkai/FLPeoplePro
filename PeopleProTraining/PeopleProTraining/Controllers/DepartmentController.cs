@@ -41,6 +41,8 @@ namespace PeopleProTraining.Controllers
         {
             //for models that require other objects, like departments and employees you can add a select list to use for a dropdown:
             ViewBag.Departments = new SelectList(m_repo.GetDepartments(), "Id", "Name");
+            //NOTE: (BELOW) If tables have association
+            ViewData["BuildingId"] = new SelectList(m_repo.GetBuildings(), "Id", "Name");
             return View();
         }
 
@@ -98,6 +100,7 @@ namespace PeopleProTraining.Controllers
 
         public ActionResult edit(int id)
         {
+            ViewData["BuildingId"] = new SelectList(m_repo.GetBuildings(), "Id", "Name");
             Department department = m_repo.GetDepartment(id);
             if (department == null)
             {

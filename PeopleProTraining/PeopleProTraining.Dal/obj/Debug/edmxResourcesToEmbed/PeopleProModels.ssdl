@@ -4,18 +4,13 @@
     <EntitySet Name="Employees" EntityType="PeopleProModels.Store.Employees" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Building" EntityType="PeopleProModels.Store.Building" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Departments" EntityType="PeopleProModels.Store.Departments" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="BuildingsDepartment" EntityType="PeopleProModels.Store.BuildingsDepartment" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_BuildingsDepartment_Buildings" Association="PeopleProModels.Store.FK_BuildingsDepartment_Buildings">
-      <End Role="Buildings" EntitySet="Building" />
-      <End Role="BuildingsDepartment" EntitySet="BuildingsDepartment" />
-    </AssociationSet>
-    <AssociationSet Name="FK_BuildingsDepartment_Department" Association="PeopleProModels.Store.FK_BuildingsDepartment_Department">
-      <End Role="Department" EntitySet="Departments" />
-      <End Role="BuildingsDepartment" EntitySet="BuildingsDepartment" />
-    </AssociationSet>
     <AssociationSet Name="DepartmentEmployee" Association="PeopleProModels.Store.DepartmentEmployee">
       <End Role="Department" EntitySet="Departments" />
       <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="BuildingDepartment" Association="PeopleProModels.Store.BuildingDepartment">
+      <End Role="Building" EntitySet="Building" />
+      <End Role="Department" EntitySet="Departments" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Employees">
@@ -24,8 +19,8 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FirstName" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DepartmentId" Type="int" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Building">
     <Key>
@@ -41,14 +36,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="BuildingsDepartment">
-    <Key>
-      <PropertyRef Name="Buildings_Id" />
-      <PropertyRef Name="Departments_Id" />
-    </Key>
-    <Property Name="Buildings_Id" Type="int" Nullable="false" />
-    <Property Name="Departments_Id" Type="int" Nullable="false" />
+    <Property Name="BuildingId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="DepartmentEmployee">
     <End Role="Department" Type="PeopleProModels.Store.Departments" Multiplicity="1" />
@@ -62,27 +50,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_BuildingsDepartment_Buildings">
-    <End Role="Buildings" Type="PeopleProModels.Store.Building" Multiplicity="1" />
-    <End Role="BuildingsDepartment" Type="PeopleProModels.Store.BuildingsDepartment" Multiplicity="*" />
+  <Association Name="BuildingDepartment">
+    <End Role="Building" Type="PeopleProModels.Store.Building" Multiplicity="1" />
+    <End Role="Department" Type="PeopleProModels.Store.Departments" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Buildings">
+      <Principal Role="Building">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="BuildingsDepartment">
-        <PropertyRef Name="Buildings_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_BuildingsDepartment_Department">
-    <End Role="BuildingsDepartment" Type="PeopleProModels.Store.BuildingsDepartment" Multiplicity="*" />
-    <End Role="Department" Type="PeopleProModels.Store.Departments" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Department">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="BuildingsDepartment">
-        <PropertyRef Name="Departments_Id" />
+      <Dependent Role="Department">
+        <PropertyRef Name="BuildingId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

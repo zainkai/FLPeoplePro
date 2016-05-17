@@ -1,4 +1,4 @@
-﻿@model PeopleProTraining.Dal.Models.DepartmentMetaData
+﻿@model PeopleProTraining.Dal.Models.Department
 
 @{
     ViewBag.Title = "Details";
@@ -7,9 +7,17 @@
 <h2>Details</h2>
 
 <div>
-    <h4>DepartmentMetaData</h4>
+    <h4>Department</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Building Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Building.Name)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>

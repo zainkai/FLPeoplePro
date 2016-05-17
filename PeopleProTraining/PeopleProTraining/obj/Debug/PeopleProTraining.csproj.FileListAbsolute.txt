@@ -104,7 +104,6 @@ C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining\bin\Syste
 C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining\obj\Debug\PeopleProTraining.csprojResolveAssemblyReference.cache
 C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining\obj\Debug\PeopleProTraining.dll
 C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining\obj\Debug\PeopleProTraining.pdb
-C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\turkingk\Desktop\training-old\PeopleProTraining\PeopleProTraining\bin\ApplicationInsights.config
 C:\Users\turkingk\Desktop\training-old\PeopleProTraining\PeopleProTraining\bin\roslyn\csc.exe
 C:\Users\turkingk\Desktop\training-old\PeopleProTraining\PeopleProTraining\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -159,3 +158,4 @@ C:\Users\turkingk\Desktop\training-old\PeopleProTraining\PeopleProTraining\bin\S
 C:\Users\turkingk\Desktop\training-old\PeopleProTraining\PeopleProTraining\obj\Debug\PeopleProTraining.csprojResolveAssemblyReference.cache
 C:\Users\turkingk\Desktop\training-old\PeopleProTraining\PeopleProTraining\obj\Debug\PeopleProTraining.dll
 C:\Users\turkingk\Desktop\training-old\PeopleProTraining\PeopleProTraining\obj\Debug\PeopleProTraining.pdb
+C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining\bin\Microsoft.Web.Infrastructure.dll

@@ -40,7 +40,7 @@ namespace PeopleProTraining.Controllers
         }
         public ActionResult Create()
         {
-            ViewBag.Employees = new SelectList(m_repo.GetEmployees(), "Id", "Name");
+            ViewBag.Employees = new SelectList(m_repo.GetEmployees(), "Id", "FirstName");
             return View();
         }
 
