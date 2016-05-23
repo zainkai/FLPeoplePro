@@ -29,7 +29,7 @@ namespace PeopleProTraining.Controllers
         {
             //creating an object filled with database info....
             IEnumerable<Employee> employees = m_repo.GetEmployees();
-            if (employees == null)//TODO Check for object equivalent of .IsNullOrEmpty()
+            if (employees == null)
             {
                 return RedirectToAction("Create");
             }
@@ -41,6 +41,8 @@ namespace PeopleProTraining.Controllers
         public ActionResult Create()
         {
             ViewBag.Employees = new SelectList(m_repo.GetEmployees(), "Id", "FirstName");
+            //NOTE: (BELOW) If tables have association
+            ViewData["DepartmentId"] = new SelectList(m_repo.GetDepartments(), "Id", "Name");
             return View();
         }
 
@@ -98,6 +100,7 @@ namespace PeopleProTraining.Controllers
 
         public ActionResult edit(int id)
         {
+            ViewData["DepartmentId"] = new SelectList(m_repo.GetDepartments(), "Id", "Name");
             Employee employee = m_repo.GetEmployee(id);
             if (employee == null)
             {
