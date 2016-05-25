@@ -38,7 +38,16 @@ namespace PeopleProTraining.Controllers
             }
         }
 
-    
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Post(JsonResult data)
+        {
+
+            Building building = null;
+
+            return Json(data);
+        }
+
 
         public ActionResult Create()
         {
