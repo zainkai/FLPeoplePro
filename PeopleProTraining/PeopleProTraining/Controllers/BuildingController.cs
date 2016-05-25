@@ -38,11 +38,7 @@ namespace PeopleProTraining.Controllers
             }
         }
 
-        public ActionResult Create_Modal()
-        {
-            ViewBag.Buildings = new SelectList(m_repo.GetBuildings(), "Id", "Name");
-            return PartialView("Create_Modal");
-        }
+    
 
         public ActionResult Create()
         {

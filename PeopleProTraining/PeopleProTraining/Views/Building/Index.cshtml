@@ -5,21 +5,21 @@
 }
 
 <!-- **********SCRIPTS***************** -->
-    <script src="~/scripts/jquery-1.9.1.js" type="text/javascript"></script>
-    <script src="~/scripts/jquery-ui-1.11.4.js" type="text/javascript"></script>
+    <script src="/scripts/jquery-1.10.2.js"></script>
+    <script src="~/scripts/bootstrap.js"></script>
 
+    <script>
+        function ajax_post(){
+            data = { name: null, address: null };
+            data.name = document.getElementById("building_name_txt").value;
+            data.address = document.getElementById("building_addr_txt").value;
 
-    <script type="text/javascript">
-        $(function () {
-            $("#dlg_building_create").dialog({
-                modal: true,
-                autoOpen: false,
-                width: 400,
-                resizable: true,
-                title: "Create A New Building",
-            });
-        });
+            req.open("POST", "Building/Create", true);
+            //finish asynchronous function
+        }
+
     </script>
+
 <!--***********************************-->
 
 
@@ -27,12 +27,34 @@
 
 <h2>Building Index</h2>
 
-<p>
-    @Html.ActionLink("Create new (modal)","Create_Modal" ,null,new { @id = "dlg_building_create" })
-</p>
+<button type="button" class="btn" data-toggle="modal" data-target="#create_building_modal">Create new Building(modal)</button>
 
-<div id="dlg_building_create"> </div>
-
+<!-- Modal******************************************************** -->
+<div id="create_building_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <form  method="post">
+                    <p>Address:</p>
+                    <input id="building_addr_txt" type="text" name="addr_input" />
+                    <br />
+                    <p>Name:</p>
+                    <input id="building_name_txt" type="text" name="name_input" />
+                    <br />
+                    <input id="data_submit" type="submit" onclick="javascript:ajax_post" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--*****************************************************************-->
 
 
 <p>
