@@ -39,13 +39,14 @@ namespace PeopleProTraining.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Post(JsonResult data)
+        public void Post(string buildName, string buildAddress)
         {
+            Building building = new Building();
+            building.Name = buildName;
+            building.Address = buildAddress;
 
-            Building building = null;
-
-            return Json(data);
+            m_repo.SaveBuilding(building);
+            //return RedirectToAction("Index");
         }
 
 
