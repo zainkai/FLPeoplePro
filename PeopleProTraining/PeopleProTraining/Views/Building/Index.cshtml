@@ -9,48 +9,38 @@
     <script src="~/scripts/bootstrap.js"></script>
     <script>
         function ajax_post() {
-            //append tr to table***
+            $('#create_building_modal').modal('hide');//hides modal.
+            event.preventDefault();//prevents auto refresh <<<<<<<<<
+
             var postData = new Object();
             postData.buildName = document.getElementById("building_name_txt").value;
             postData.buildAddress = document.getElementById("building_addr_txt").value;
-            //console.log("this function here");//debugging tool
+            postData.Id = null;
 
+            function appendHTML() {
+                //alert(mydata);
+                //alert("complete ajax was entered");
+                var row = document.createElement("TR");
+                var td_name = document.createElement("TD");
+                var td_addr = document.createElement("TD");
+                var td_functions = document.createElement("TD");
+
+                //filling data
+                td_name.textContent = postData.buildName;
+                td_addr.textContent = postData.buildAddress;
+                td_functions.textContent = "TODO HERE";
+
+                //appending to html
+                row.appendChild(td_name);
+                row.appendChild(td_addr);
+                row.appendChild(td_functions);
+                $("#BuildingTable0 > tbody").append(row);
+            }
             $.ajax({
                 method: "POST",
                 url: '@Url.Action("Post")',
                 data: postData,
-                complete: function () {
-                    alert("complete ajax was entered");
-                    var table = document.getElementById("BuildingTable");
-                    var row = table.insertRow(0);
-                    var td_name = row.insertCell(0);
-                    var td_addr = row.insertCell(1);
-                    var td_func = row.insertCell(2);
-
-                    td_name.textContent = postData.buildName;
-                    td_addr.textContent = postData.buildAddress;
-                    td_func.textContent = "TODO: ADD functions here";
-
-
-                    /*
-                    var row = document.createElement("tr");
-                    var td_name = document.createElement("td");
-                    var td_addr = document.createElement("td");
-                    var td_functions = document.createElement("td");
-                    var table = document.getElementById("BuildingTable");
-
-                    //filling data
-                    td_name = postData.buildName;
-                    td_addr = postData.buildAddress;
-                    td_functions = "TODO: functions";
-
-                    //appending to html
-                    row.appendChild(td_name);
-                    row.appendChild(td_addr);
-                    row.appendChild(td_functions);
-                    table.appendChild(row);
-                    */
-                },
+                complete: appendHTML(),
                 error: function (xhr, status, errorText) {
                     alert(errorText);
                 }
@@ -97,7 +87,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table id="BuildingTable" class="table">
+<table id="BuildingTable0" class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Address)

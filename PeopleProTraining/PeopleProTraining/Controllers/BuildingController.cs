@@ -39,14 +39,16 @@ namespace PeopleProTraining.Controllers
         }
 
         [HttpPost]
-        public void Post(string buildName, string buildAddress)
+        public int Post(string buildName, string buildAddress)
         {
             Building building = new Building();
             building.Name = buildName;
             building.Address = buildAddress;
-
             m_repo.SaveBuilding(building);
-            //return RedirectToAction("Index");
+
+            Building returnedBuilding = m_repo.GetBuilding(b => b.Address == buildAddress || b.Name == buildName);
+            int myID = returnedBuilding.Id;
+            return myID;
         }
 
 
