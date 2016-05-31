@@ -39,18 +39,11 @@ namespace PeopleProTraining.Controllers
         }
 
         [HttpPost]
-        public int Post(string buildName, string buildAddress)
+        public ActionResult CreateAjax(Building building)
         {
-            Building building = new Building();
-            building.Name = buildName;
-            building.Address = buildAddress;
             m_repo.SaveBuilding(building);
-
-            Building returnedBuilding = m_repo.GetBuilding(b => b.Address == buildAddress || b.Name == buildName);
-            int myID = returnedBuilding.Id;
-            return myID;
+            return PartialView("_BuildingRow", building);
         }
-
 
         public ActionResult Create()
         {

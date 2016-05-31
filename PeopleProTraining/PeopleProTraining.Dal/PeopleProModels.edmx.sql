@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/23/2016 08:44:45
+-- Date Created: 05/31/2016 09:28:32
 -- Generated from EDMX file: C:\Users\turkingk\Desktop\training\PeopleProTraining\PeopleProTraining.Dal\PeopleProModels.edmx
 -- --------------------------------------------------
 
@@ -51,8 +51,8 @@ CREATE TABLE [dbo].[Employees] (
 );
 GO
 
--- Creating table 'Building'
-CREATE TABLE [dbo].[Building] (
+-- Creating table 'Buildings'
+CREATE TABLE [dbo].[Buildings] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Address] nvarchar(max)  NOT NULL,
     [Name] nvarchar(max)  NOT NULL
@@ -77,9 +77,9 @@ ADD CONSTRAINT [PK_Employees]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Building'
-ALTER TABLE [dbo].[Building]
-ADD CONSTRAINT [PK_Building]
+-- Creating primary key on [Id] in table 'Buildings'
+ALTER TABLE [dbo].[Buildings]
+ADD CONSTRAINT [PK_Buildings]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -112,7 +112,7 @@ GO
 ALTER TABLE [dbo].[Departments]
 ADD CONSTRAINT [FK_BuildingDepartment]
     FOREIGN KEY ([BuildingId])
-    REFERENCES [dbo].[Building]
+    REFERENCES [dbo].[Buildings]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO

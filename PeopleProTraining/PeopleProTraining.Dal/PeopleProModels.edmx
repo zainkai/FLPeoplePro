@@ -7,14 +7,14 @@
     <Schema Namespace="PeopleProModels.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="PeopleProModelsStoreContainer">
     <EntitySet Name="Employees" EntityType="PeopleProModels.Store.Employees" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Building" EntityType="PeopleProModels.Store.Building" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Buildings" EntityType="PeopleProModels.Store.Buildings" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Departments" EntityType="PeopleProModels.Store.Departments" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="DepartmentEmployee" Association="PeopleProModels.Store.DepartmentEmployee">
       <End Role="Department" EntitySet="Departments" />
       <End Role="Employee" EntitySet="Employees" />
     </AssociationSet>
     <AssociationSet Name="BuildingDepartment" Association="PeopleProModels.Store.BuildingDepartment">
-      <End Role="Building" EntitySet="Building" />
+      <End Role="Building" EntitySet="Buildings" />
       <End Role="Department" EntitySet="Departments" />
     </AssociationSet>
   </EntityContainer>
@@ -27,7 +27,7 @@
     <Property Name="DepartmentId" Type="int" Nullable="false" />
     <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="Building">
+  <EntityType Name="Buildings">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -56,7 +56,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="BuildingDepartment">
-    <End Role="Building" Type="PeopleProModels.Store.Building" Multiplicity="1" />
+    <End Role="Building" Type="PeopleProModels.Store.Buildings" Multiplicity="1" />
     <End Role="Department" Type="PeopleProModels.Store.Departments" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Building">
@@ -73,14 +73,14 @@
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="PeopleProModels" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="PeopleProModelsContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employees" EntityType="PeopleProModels.Employee" />
-          <EntitySet Name="Building" EntityType="PeopleProModels.Building" />
+          <EntitySet Name="Buildings" EntityType="PeopleProModels.Building" />
           <EntitySet Name="Departments" EntityType="PeopleProModels.Department" />
           <AssociationSet Name="DepartmentEmployee" Association="PeopleProModels.DepartmentEmployee">
             <End EntitySet="Departments" Role="Department" />
             <End EntitySet="Employees" Role="Employee" />
           </AssociationSet>
           <AssociationSet Name="BuildingDepartment" Association="PeopleProModels.BuildingDepartment">
-            <End Role="Building" EntitySet="Building" />
+            <End Role="Building" EntitySet="Buildings" />
             <End Role="Department" EntitySet="Departments" />
           </AssociationSet>
         </EntityContainer>
@@ -153,9 +153,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Building">
+    <EntitySetMapping Name="Buildings">
       <EntityTypeMapping TypeName="IsTypeOf(PeopleProModels.Building)">
-        <MappingFragment StoreEntitySet="Building">
+        <MappingFragment StoreEntitySet="Buildings">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Name" ColumnName="Name" />

@@ -9,48 +9,37 @@
     <script src="~/scripts/bootstrap.js"></script>
     <script>
         function ajax_post() {
-            $('#create_building_modal').modal('hide');//hides modal.
             event.preventDefault();//prevents auto refresh <<<<<<<<<
+            //$('#create_building_modal').modal('show');//hides modal.
 
-            var postData = new Object();
-            postData.buildName = document.getElementById("building_name_txt").value;
-            postData.buildAddress = document.getElementById("building_addr_txt").value;
-            postData.Id = null;
+            var buildingData = { Name: "BuildName", Address: "Address",Id:null };
+            buildingData.Name = document.getElementById("building_name_txt").value;
+            buildingData.Address = document.getElementById("building_addr_txt").value;
 
-            function appendHTML() {
-                //alert(mydata);
-                //alert("complete ajax was entered");
-                var row = document.createElement("TR");
-                var td_name = document.createElement("TD");
-                var td_addr = document.createElement("TD");
-                var td_functions = document.createElement("TD");
 
-                //filling data
-                td_name.textContent = postData.buildName;
-                td_addr.textContent = postData.buildAddress;
-                td_functions.textContent = "TODO HERE";
 
-                //appending to html
-                row.appendChild(td_name);
-                row.appendChild(td_addr);
-                row.appendChild(td_functions);
-                $("#BuildingTable0 > tbody").append(row);
+            if (buildingData.Name == null || buildingData.Name == "" || buildingData.Address == null || buildingData.Address == "") {
+                alert("Building Name or Address is invalid.");
             }
-            $.ajax({
-                method: "POST",
-                url: '@Url.Action("Post")',
-                data: postData,
-                complete: appendHTML(),
-                error: function (xhr, status, errorText) {
-                    alert(errorText);
-                }
-            });
+            else {
+                $.ajax({
+                    method: "POST",
+                    url: '@Url.Action("CreateAjax")', //controller action i.e Building/CreateAjax
+                    data: buildingData,
+                    success: function (data, status, jqXHR) {
+                        console.log(data);
+                        $("#BuildingTable0 > tbody").append(data);
+                       // $('#create_building_modal').modal('hide');//hides modal.
+                       // $('.modal-backdrop').remove();//because div is changed background needs to be manually removed
+                    },
+                    error: function (xhr, status, errorText) {
+                        alert(errorText);
+                    }
+                });//end of ajax function
+            }
         }
     </script>
 }
-
-
-
 
 <h2>Building Index</h2>
 
@@ -72,7 +61,7 @@
                     <p>Name:</p>
                     <input id="building_name_txt" type="text" name="name_input" />
                     <br />
-                    <input id="data_submit" type="submit" onclick="javascript: ajax_post();" />
+                    <input id="data_submit" type="submit" onclick="javascript: ajax_post();" data-dismiss="modal" />
                 </form>
             </div>
             <div class="modal-footer">
@@ -99,19 +88,7 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+    @Html.Partial("_BuildingRow", item)
 }
 
 </table>
